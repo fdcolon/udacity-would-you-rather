@@ -3,7 +3,7 @@ import {
   SET_INVALID_USER,
   SET_LOGOUT_USER
 } from '../actions/authedUser'
-import { SAVE_ANSWER } from '../actions/questions'
+import { ADD_ANSWER } from '../actions/authedUser'
 
 export default function authUser (state = null, action) {
   switch (action.type) {
@@ -15,7 +15,7 @@ export default function authUser (state = null, action) {
       }
     case SET_LOGOUT_USER:
       return null
-    case SAVE_ANSWER:
+    case ADD_ANSWER:
       return {
         ...state,
         answers: {

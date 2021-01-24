@@ -32,9 +32,9 @@ export default function questions (state = {}, action) {
           },
           optionTwo: {
             ...state[action.question.qid].optionTwo,
-            // votes: action.question.answer === 'optionTwo'
-            //   ? state[action.question.qid].optionTwo.votes.concat([action.question.authedUser])
-            //   : [...state[action.question.qid].optionTwo.votes]
+            votes: action.question.answer === 'optionTwo'
+              ? state[action.question.qid].optionTwo.votes.concat([action.question.authedUser])
+              : [...state[action.question.qid].optionTwo.votes]
           }
         }
       }

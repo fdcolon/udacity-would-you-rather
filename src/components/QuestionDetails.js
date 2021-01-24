@@ -1,10 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Card, Form, Button, ProgressBar } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 import { accessControl } from '../helpers/accessControl'
 import { formatQuestion } from '../helpers'
 import { handleSaveAnswer } from '../redux/actions/questions'
+import QuestionUnanswered from './QuestionUnanswered'
+import QuestionAnswered from './QuestionAnswered'
+import Avatar from './Avatar'
 
 class QuestionDetails extends Component {
   state = {
@@ -76,65 +79,29 @@ class QuestionDetails extends Component {
           <h2>{ title }</h2>
         </Card.Header>
         <Card.Body>
-        <div className="avatar-section">
-          <img
-            src={ `${process.env.PUBLIC_URL}${authorAvatar}` }
-            alt="user-avatar"
-            className={ `avatar ${isAnswered ? 'big' : ''}` }
-          />
-        </div>
-        <div className="question-section">
-          { !isAnswered && (
-            <Fragment>
-              <h4>Would you rather</h4>
-              <Form noValidate onSubmit={ (e) => this.handleVote(e) }>
-                { Object.keys(options).map(questionType => (
-                  <Form.Check 
-                    key={ questionType }
-                    type="radio"
-                    name="vote"
-                    value={ questionType }
-                    checked={ vote === questionType }
-                    label={ options[questionType].label }
-                    onChange={ (e) => this.onSelectOption(e.currentTarget.value) }
-                  />  
-                )) }
-                <Button type="submit">
-                  Submit
-                </Button>
-              </Form>
-            </Fragment>
-          ) }
-          { isAnswered && (
-            <Fragment>
-              <h3>Results:</h3>
-              { Object.keys(options).map(questionType => (
-                <div
-                  key={ questionType }
-                  className={ `option-block ${vote === questionType ? 'selected' : ''}` }
-                >
-                  <p className="question">
-                    { `Would you rather ${options[questionType].label}?` }
-                  </p>
-                  <ProgressBar
-                    className="statistic-bar"
-                    now={ options[questionType].percentage }
-                    label={ options[questionType].percentage > 0
-                      ? `${options[questionType].percentage}%`
-                      : ''
-                    }
-                  />
-                  <p className="statistic-data">
-                    { `${options[questionType].votes} out of ${totalVotes} votes` }
-                  </p>
-                  <div className="your-vote">
-                    Your Vote
-                  </div>
-                </div>
-              )) }
-            </Fragment>
-          ) }
-        </div>
+          <div className="avatar-section">
+            <Avatar
+              url={ authorAvatar }
+              showBig={ true }
+            />
+          </div>
+          <div className="question-section">
+            { !isAnswered && (
+              <QuestionUnanswered
+                options={ options }
+                vote={ vote }
+                onOptionChange={ (option) => this.onSelectOption(option) }
+                onSetVote={ (e) => this.handleVote(e) }
+              />
+            ) }
+            { isAnswered && (
+              <QuestionAnswered
+                options={ options }
+                vote={ vote }
+                totalVotes={ totalVotes }
+              />
+            ) }
+          </div>
         </Card.Body>
       </Card>
     )

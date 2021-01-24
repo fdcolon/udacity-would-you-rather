@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 import { setLogoutUser, VALID_USER } from '../redux/actions/authedUser'
+import Avatar from './Avatar'
 
 class Nav extends Component {
   onLogoutUser () {
@@ -44,11 +45,7 @@ class Nav extends Component {
           { authedUser && authedUser.status === VALID_USER && (
             <div className="user-section">
               <p>Hello, { authedUser.name }</p>
-              <img
-                src={ `${process.env.PUBLIC_URL}${authedUser.avatarURL}` }
-                alt="user-avatar"
-                className="avatar"
-              />
+              <Avatar url={ authedUser.avatarURL } />
               <button
                 className="logout-btn"
                 onClick={ () => this.onLogoutUser() }>

@@ -48,6 +48,9 @@ class Home extends Component {
             eventKey={ questionType }
             title={ `${capitalize(questionType)} Questions` }
           >
+            { !groupedQuestions[questionType].length && (
+              <p>You don't have any { questionType } questions</p>
+            ) }
             { groupedQuestions[questionType].map(question => (
               <QuestionCard
                 key={ question.id }

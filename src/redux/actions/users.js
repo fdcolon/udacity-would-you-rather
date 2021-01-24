@@ -1,5 +1,5 @@
 export const RECEIVE_USERS = 'RECEIVE_USERS'
-export const GET_USER = 'GET_USER'
+export const SET_USER_ANSWER = 'SET_USER_ANSWER'
 
 export function receiveUsers (users) {
   return {
@@ -8,9 +8,9 @@ export function receiveUsers (users) {
   }
 }
 
-export function findUser (id) {
+export function setUserAnswer (question) {
   return {
-    type: GET_USER,
-    id
+    type: SET_USER_ANSWER,
+    question
   }
 }

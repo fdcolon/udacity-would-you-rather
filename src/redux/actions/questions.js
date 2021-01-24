@@ -1,5 +1,7 @@
 import { saveQuestion, saveQuestionAnswer } from '../../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { setUserAnswer } from './users'
+import { addAnswerToUser } from './authedUser'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
@@ -44,6 +46,8 @@ export function handleSaveAnswer (questionData) {
     dispatch(showLoading())
 
     return saveQuestionAnswer(questionData)
+      .then(() => dispatch(setUserAnswer(questionData)))
+      .then(() => dispatch(addAnswerToUser(questionData)))
       .then(() => dispatch(addAnswer(questionData)))
       .then(() => dispatch(hideLoading()))
   }

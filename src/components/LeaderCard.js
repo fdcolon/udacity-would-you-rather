@@ -4,6 +4,7 @@ import { FaTrophy } from "react-icons/fa"
 
 import LeaderScoreTopic from './LeaderScoreTopic'
 import LeaderScoreCard from './LeaderScoreCard'
+import Avatar from './Avatar'
 
 function LeaderCard(props) {
   const { leader, place } = props
@@ -25,11 +26,7 @@ function LeaderCard(props) {
     <Card className="leader-card">
       <Card.Body>
         <div className="avatar-section">
-          <img
-            src={ `${process.env.PUBLIC_URL}${leader.avatarURL}` }
-            alt="user-avatar"
-            className='avatar'
-            />
+          <Avatar url={ leader.avatarURL } />
         </div>
         <div className="leader-section">
           <h2>{ leader.name }</h2>
