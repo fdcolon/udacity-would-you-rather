@@ -24,10 +24,8 @@ class QuestionDetails extends Component {
     const votesOptTwo = this.props.questions[question_id].optionTwo.votes.length
 
     if (prevVotesOptOne !== votesOptOne || prevVotesOptTwo !== votesOptTwo) {
-      console.log('it changed!!!')
       this.setFormatToQuestion()
     }
-    console.log('details updated...', prevProps, this.props)
   }
 
   setFormatToQuestion () {
@@ -37,7 +35,6 @@ class QuestionDetails extends Component {
       ? formatQuestion(questions[question_id], users, authedUser)
       : null
     const vote = authedUser.answers[question_id] || 'optionOne'
-    console.log(question)
 
     this.setState(() => ({
       question,

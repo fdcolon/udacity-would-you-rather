@@ -1,5 +1,4 @@
 export function groupQuestions (questions, authedUser) {
-  console.log(questions)
   return {
     unanswered: Object.keys(questions)
       .map(key => questions[key])
@@ -40,4 +39,33 @@ export function formatQuestion (question, users, authedUser) {
     totalVotes,
     isAnswered
   }
+}
+
+export function getLeadersBoard (users) {
+  const usersData = Object.keys(users)
+    .map(userId => {
+      const user = users[userId]
+      const { id, name, avatarURL, answers, questions } = user
+      return {
+        id,
+        name,
+        avatarURL,
+        topics: [
+          {
+            id: 'answered',
+            label: 'Answered Questions',
+            value: Object.keys(answers).length
+          },
+          {
+            id: 'created',
+            label: 'Created Questions',
+            value: questions.length
+          }
+        ],
+        totalScore: Object.keys(answers).length + questions.length
+      }
+    })
+    .sort((a, b) => b.totalScore - a.totalScore)
+
+  return usersData.slice(0, 3)
 }

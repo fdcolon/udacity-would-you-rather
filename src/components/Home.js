@@ -16,7 +16,6 @@ class Home extends Component {
 
   componentDidMount () {
     const { questions, authedUser } = this.props
-    console.log(questions)
     
     this.setState(() => ({
       groupedQuestions: groupQuestions(questions, authedUser)
@@ -36,8 +35,6 @@ class Home extends Component {
     if (!groupedQuestions) {
       return null
     }
-
-    console.log(groupedQuestions)
 
     return (
       <Tabs

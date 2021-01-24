@@ -77,7 +77,7 @@ const mapStateToProps = ({ authedUser, users }) => {
   return {
     loading: isEmpty(users),
     authedUser,
-    users,
+    users
   }
 }
 
