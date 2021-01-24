@@ -11,6 +11,14 @@ export function groupQuestions (questions, authedUser) {
   }
 }
 
+function formatPercentage (value, totalVotes) {
+  const fixedValue = (value * 100) % totalVotes === 0
+    ? 0
+    : 1
+
+  return (value * 100 / totalVotes).toFixed(fixedValue)
+}
+
 export function formatQuestion (question, users, authedUser) {
   const { id, author: publisher, optionOne, optionTwo } = question
   const author = users[publisher]
@@ -28,12 +36,12 @@ export function formatQuestion (question, users, authedUser) {
       optionOne: {
         label: optionOne.text,
         votes: optionOneVotes,
-        percentage: Math.round(optionOneVotes * 100 / totalVotes)
+        percentage: formatPercentage(optionOneVotes, totalVotes)
       },
       optionTwo: {
         label: optionTwo.text,
         votes: optionTwoVotes,
-        percentage: Math.round(optionTwoVotes * 100 / totalVotes)
+        percentage: formatPercentage(optionTwoVotes, totalVotes)
       }
     },
     totalVotes,
