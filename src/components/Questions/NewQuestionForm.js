@@ -20,6 +20,7 @@ class NewQuestionForm extends Component {
           placeholder="Enter Option One Text Here"
           autoFocus={ true }
         />
+        <hr />
         <Field
           name="optionTwo"
           component={ ReduxFormInput }

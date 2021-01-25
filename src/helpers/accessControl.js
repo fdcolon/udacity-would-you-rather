@@ -7,20 +7,24 @@ import { VALID_USER } from '../redux/actions/authedUser'
 export const accessControl = WrappedComponent => {
   const SecuredControl = class extends Component {
     render() {
-      const { authedUser } = this.props
+      const { authedUser, questions, match } = this.props
       const isAllowed = authedUser && authedUser.status === VALID_USER
+      const { question_id } = match?.params || undefined
 
-      if (!isAllowed) {
+      if (!isAllowed && (!question_id || !!questions[question_id])) {
         return <Redirect to="/"/>
+      } else if (!isAllowed && question_id && !questions[question_id]) {
+        return <Redirect to="/404"/>
       }
 
       return <WrappedComponent { ...this.props } />
     }
   }
 
-  const mapStateToProps = ({ authedUser }) => {
+  const mapStateToProps = ({ authedUser, questions, loadingBar }) => {
     return {
-      authedUser
+      authedUser,
+      questions
     }
   }
 

@@ -4,7 +4,7 @@ import LoadingBar from 'react-redux-loading'
 import { isEmpty } from 'lodash'
 import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
-import { handleGetValidUsers } from '../redux/actions/shared'
+import { handleGetInitialData } from '../redux/actions/shared'
 
 import Nav from './Nav'
 import Login from './Login'
@@ -12,14 +12,15 @@ import Home from './Home'
 import QuestionDetails from './Questions/QuestionDetails'
 import NewQuestion from './Questions/NewQuestion'
 import LeaderBoard from './LeaderBoard/LeaderBoard'
+import PageNotFound from './PageNotFound'
 import { VALID_USER } from '../redux/actions/authedUser'
 
 class App extends Component {
   componentDidMount() {
-    const { users, handleGetValidUsers } = this.props
+    const { users, handleGetInitialData } = this.props
 
     if (isEmpty(users)) {
-      handleGetValidUsers()
+      handleGetInitialData()
     }
   }
 
@@ -57,6 +58,10 @@ class App extends Component {
                         path="/leaderboard"
                         component={ LeaderBoard }
                       />
+                      <Route
+                        path="/404"
+                        component={ PageNotFound }
+                      />
                       <Route render={() => <Redirect to={
                         authedUser?.status === VALID_USER
                           ? '/home'
@@ -82,7 +87,7 @@ const mapStateToProps = ({ authedUser, users }) => {
 }
 
 const dispatchToProps = {
-  handleGetValidUsers
+  handleGetInitialData
 }
 
 export default connect(

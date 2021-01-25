@@ -7,16 +7,11 @@ export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
 
-export function receiveQuestions (questions, user) {
+export function receiveQuestions (questions) {
   return {
     type: GET_QUESTIONS,
-    questions,
-    user
+    questions
   }
-}
-
-export function getQuestions () {
-
 }
 
 function addQuestion (question) {

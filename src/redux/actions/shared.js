@@ -1,19 +1,20 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-import { getUsers, getQuestions } from '../../utils/api'
+import { getInitialData } from '../../utils/api'
 import { setAuthedUser, setInvalidUser } from './authedUser'
 import { receiveUsers } from './users'
 import { receiveQuestions } from './questions'
 
 /**
- * Gets the users list for Login purposes.
+ * Gets the initial values (users & questions).
  */
-export function handleGetValidUsers () {
+export function handleGetInitialData () {
   return dispatch => {
     dispatch(showLoading())
 
-    return getUsers()
-      .then(users => {
+    return getInitialData()
+      .then(({ users, questions }) => {
+        dispatch(receiveQuestions(questions))
         dispatch(receiveUsers(users))
         dispatch(hideLoading())
       })
@@ -36,28 +37,7 @@ export function handleSignInUser (userId, users) {
   
   return dispatch => {
     dispatch(showLoading())
-
-    return getQuestions()
-      .then(questions => {
-        dispatch(receiveQuestions(questions, users[validUser]))
-        dispatch(setAuthedUser(users[validUser]))
-        dispatch(hideLoading())
-      })
-  }
-}
-
-/**
- * Gets the 
- * @param {String} userId // Contains the User ID of the valid logged user.
- */
-export function handleGetQuestions (user) {
-  return dispatch => {
-    dispatch(showLoading())
-
-    return getQuestions()
-      .then(questions => {
-        dispatch(receiveQuestions(questions, user))
-        dispatch(hideLoading())
-      })
+    dispatch(setAuthedUser(users[validUser]))
+    dispatch(hideLoading())
   }
 }
