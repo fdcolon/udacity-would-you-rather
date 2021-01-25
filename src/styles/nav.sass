@@ -1,7 +1,10 @@
 nav
   border-bottom: 0.1rem solid #00cc99
+  margin-bottom: 1rem
 
   .nav-container
+    margin: 0 auto .2rem
+    width: 44rem
     display: flex
     justify-content: space-between
 
@@ -53,9 +56,6 @@ nav
       .avatar
         margin-left: 1rem
         margin-right: 1.5rem
-        width: 1.5rem
-        height: 1.5rem
-        border-radius: 50%
       
       .logout-btn
         padding-left: 0.6rem
@@ -83,12 +83,3 @@ nav
             border-radius: 0.25rem 0.25rem 0 0
             background: #00cc99
             transform: scale(1, 1) perspective(1em) rotateX(5deg)
-
-@media screen and (min-width: 768px)
-  nav
-    margin-bottom: 1rem
-
-    .nav-container
-      margin: 0 auto .2rem
-      width: 44rem
-  

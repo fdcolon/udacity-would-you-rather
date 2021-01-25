@@ -11,10 +11,6 @@ const renderError = ({ error, touched }) => {
   }
 }
 
-const trimValue = input => {
-  return input.value.trim()
-}
-
 export const ReduxFormInput = ({ input, meta, placeholder, type='text', autoFocus=false, autoComplete='off' }) => {
   let statusClass = ''
 
@@ -35,23 +31,16 @@ export const ReduxFormInput = ({ input, meta, placeholder, type='text', autoFocu
         autoComplete={ autoComplete }
         { ...input }
         autoFocus={ autoFocus }
-        onBlur={() => input.onBlur(trimValue(input))}
+        onBlur={() => input.onBlur(input.value.trim())}
       />
       { renderError(meta) }
     </div>
   )
 }
 
-export const ReduxFormSelect = ({ input, meta, placeholder, options, isLoading, defaultValue, className='' }) => {
+export const ReduxFormSelect = ({ input, meta, placeholder, options, isClearable, defaultValue, className='' }) => {
   const isDisabled = !options?.length
   const inputClassName = `select ${meta.touched && meta.error ? 'error' : ''} ${className}`.trim()
-
-  const formatGroupLabel = data => (
-    <div className="select-grouped-options">
-      <span>{ data.avatar }</span>
-      <span>{ data.name }</span>
-    </div>
-  )
 
   const handleOptionSelected = value => {
     input.onChange(value)
@@ -69,8 +58,7 @@ export const ReduxFormSelect = ({ input, meta, placeholder, options, isLoading, 
         placeholder={ placeholder }
         { ...input }
         options={ options }
-        formatGroupLabel={ formatGroupLabel }
-        isLoading={ isLoading }
+        isClearable={ isClearable }
         isDisabled={ isDisabled }
         onChange={ (value) => handleOptionSelected(value) }
         onBlur={ () => input.onBlur(input.value) }

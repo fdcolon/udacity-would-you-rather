@@ -42,7 +42,7 @@ class NewQuestion extends Component {
             <h4>Would you rather...</h4>
             <NewQuestionForm
               hasBeenSubmitted={ hasBeenSubmitted }
-              onSubmit={ (formValues) => this.onSubmitQuestion(formValues) }
+              onSubmit={ formValues => this.onSubmitQuestion(formValues) }
             />
           </div>
         </Card.Body>

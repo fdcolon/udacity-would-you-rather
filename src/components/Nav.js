@@ -45,7 +45,10 @@ class Nav extends Component {
           { authedUser && authedUser.status === VALID_USER && (
             <div className="user-section">
               <p>Hello, { authedUser.name }</p>
-              <Avatar url={ authedUser.avatarURL } />
+              <Avatar
+                url={ authedUser.avatarURL }
+                showSmall={ true }
+              />
               <button
                 className="logout-btn"
                 onClick={ () => this.onLogoutUser() }>
