@@ -19,7 +19,7 @@ function PageNotFound(props) {
         className="random-img"
       />
       <NavLink
-        to="/"
+        to="/home"
         className="home-btn"
       >
         <FaHome /> Back To Home

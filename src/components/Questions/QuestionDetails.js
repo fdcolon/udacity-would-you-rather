@@ -53,12 +53,11 @@ class QuestionDetails extends Component {
 
   handleVote (e) {
     const { question_id } = this.props.match.params
-    const { handleSaveAnswer, authedUser } = this.props
+    const { handleSaveAnswer } = this.props
     const { vote } = this.state
 
     e.preventDefault()
     handleSaveAnswer({
-      authedUser: authedUser.id,
       qid: question_id,
       answer: vote
     })

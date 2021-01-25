@@ -1,5 +1,6 @@
 .card
-  &.new-question-card
+  &.new-question-card,
+  &.new-user
     display: flex
 
     .card-header
@@ -15,7 +16,8 @@
           padding: 0.5rem 0
           width: 100%
 
-          .input
+          .input,
+          .select
             width: 100%
             border: 1px solid #dee2e6
             border-radius: 0.25rem
@@ -32,6 +34,9 @@
 
               &:focus
                 box-shadow: 0 0 0 0.2rem rgba(#33cc33, 0.25)
+
+          .input
+            padding: 0.5rem
 
           .error-message
             color: #dc3545

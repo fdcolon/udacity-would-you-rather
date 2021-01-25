@@ -13,6 +13,7 @@ import QuestionDetails from './Questions/QuestionDetails'
 import NewQuestion from './Questions/NewQuestion'
 import LeaderBoard from './LeaderBoard/LeaderBoard'
 import PageNotFound from './PageNotFound'
+import UserCard from './Users/UserCard'
 import { VALID_USER } from '../redux/actions/authedUser'
 
 class App extends Component {
@@ -45,6 +46,10 @@ class App extends Component {
                       <Route
                         path="/home"
                         component={ Home }
+                      />
+                      <Route
+                        path="/user"
+                        component={ UserCard }
                       />
                       <Route
                         path="/add"

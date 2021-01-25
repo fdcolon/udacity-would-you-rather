@@ -51,14 +51,14 @@ class NewQuestion extends Component {
   }
 }
 
-const dispatchStateToProps = {
-  handleSaveQuestion
-}
-
 const mapStateToProps = ({ loadingBar }) => {
   return {
     loading: !!loadingBar.default
   }
+}
+
+const dispatchStateToProps = {
+  handleSaveQuestion
 }
 
 export default accessControl(

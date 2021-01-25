@@ -38,17 +38,46 @@ export const ReduxFormInput = ({ input, meta, placeholder, type='text', autoFocu
   )
 }
 
-export const ReduxFormSelect = ({ input, meta, placeholder, options, isClearable, defaultValue, className='' }) => {
+export const ReduxFormSelect = ({
+  input,
+  meta,
+  placeholder,
+  options,
+  isClearable,
+  maxMenuHeight='8rem',
+  defaultValue,
+  className=''
+}) => {
   const isDisabled = !options?.length
-  const inputClassName = `select ${meta.touched && meta.error ? 'error' : ''} ${className}`.trim()
+  let statusClass = ''
+
+  if (meta.touched && meta.error) {
+    statusClass = 'error'
+  } else if (meta.touched && !meta.error) {
+    statusClass = 'ok'
+  }
+
+  const inputClassName = `select ${statusClass} ${className}`.trim()
 
   const handleOptionSelected = value => {
     input.onChange(value)
     input.value = value
   }
 
-  if (!placeholder && !input.value) {
-    input.value = defaultValue || options[0]
+  if (!input.value) {
+    if (defaultValue) {
+      input.value = defaultValue
+    } else if (!placeholder && !input.value) {
+      input.value = options[0].value
+    }
+  }
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      border: 0,
+      boxShadow: 'none'
+    })
   }
 
   return (
@@ -62,7 +91,10 @@ export const ReduxFormSelect = ({ input, meta, placeholder, options, isClearable
         isDisabled={ isDisabled }
         onChange={ (value) => handleOptionSelected(value) }
         onBlur={ () => input.onBlur(input.value) }
+        maxMenuHeight={ maxMenuHeight }
+        styles={ customStyles }
       />
+      { renderError(meta) }
     </div>
   )
 }
