@@ -4,7 +4,7 @@ import { FaTrophy } from "react-icons/fa"
 
 import LeaderScoreTopic from './LeaderScoreTopic'
 import LeaderScoreCard from './LeaderScoreCard'
-import Avatar from './Avatar'
+import Avatar from '../Avatar'
 
 function LeaderCard(props) {
   const { leader, place } = props

@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Card } from 'react-bootstrap'
 
-import { accessControl } from '../helpers/accessControl'
-import { formatQuestion } from '../helpers'
-import { handleSaveAnswer } from '../redux/actions/questions'
+import { accessControl } from '../../helpers/accessControl'
+import { formatQuestion } from '../../helpers'
+import { handleSaveAnswer } from '../../redux/actions/questions'
 import QuestionUnanswered from './QuestionUnanswered'
 import QuestionAnswered from './QuestionAnswered'
-import Avatar from './Avatar'
+import Avatar from '../Avatar'
 
 class QuestionDetails extends Component {
   state = {

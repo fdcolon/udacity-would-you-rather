@@ -9,9 +9,9 @@ import { handleGetValidUsers } from '../redux/actions/shared'
 import Nav from './Nav'
 import Login from './Login'
 import Home from './Home'
-import QuestionDetails from './QuestionDetails'
+import QuestionDetails from './Questions/QuestionDetails'
 import NewQuestion from './Questions/NewQuestion'
-import LeaderBoard from './LeaderBoard'
+import LeaderBoard from './LeaderBoard/LeaderBoard'
 import { VALID_USER } from '../redux/actions/authedUser'
 
 class App extends Component {

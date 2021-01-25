@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import { Card } from 'react-bootstrap'
 
-import Avatar from './Avatar'
+import Avatar from '../Avatar'
 
 function QuestionCard(props) {
   const { question, author } = props

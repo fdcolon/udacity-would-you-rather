@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 
-import { accessControl } from '../helpers/accessControl'
+import { accessControl } from '../../helpers/accessControl'
 import LeaderCard from './LeaderCard'
-import { getLeadersBoard } from '../helpers'
+import { getLeadersBoard } from '../../helpers'
 
 class LeaderBoard extends Component {
   state = {

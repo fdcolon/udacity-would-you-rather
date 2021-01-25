@@ -6,7 +6,7 @@ import { capitalize } from 'lodash'
 import { accessControl } from '../helpers/accessControl'
 import { groupQuestions } from '../helpers'
 
-import QuestionCard from './QuestionCard'
+import QuestionCard from './Questions/QuestionCard'
 
 class Home extends Component {
   state = {
