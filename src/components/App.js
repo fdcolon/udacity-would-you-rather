@@ -10,7 +10,7 @@ import Nav from './Nav'
 import Login from './Login'
 import Home from './Home'
 import QuestionDetails from './QuestionDetails'
-import NewQuestion from './NewQuestion'
+import NewQuestion from './Questions/NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import { VALID_USER } from '../redux/actions/authedUser'
 

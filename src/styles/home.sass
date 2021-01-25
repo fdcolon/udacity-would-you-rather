@@ -43,7 +43,7 @@
       h2
         margin: 0
         font-size: 1.1rem
-    
+
     .card-body
       display: flex
 
@@ -64,32 +64,23 @@
 
         .poll-btn
           padding: 0.25rem
-          width: 100%
           color: #00cc99
+          background-color: transparent
           border: 2px solid #00cc99
           border-radius: 0.25rem
           text-decoration: none
           text-align: center
-          font-size: 0.9rem
+          font-weight: normal
 
           &:hover
             color: #00cc99
-        
+
         form
           margin-top: 0.5rem
 
           .form-check
             padding-bottom: 1rem
 
-          .vote-btn
-            padding: 0.4rem 0
-            width: 100%
-            font-weight: bold
-            color: white
-            background-color: #00cc99
-            border-color: #00cc99
-            font-size: 0.9rem
-        
         .option-block
           margin-bottom: 1rem
           padding: 1rem
@@ -99,10 +90,10 @@
 
           &:last-child
             margin-bottom: 0
-          
+
           .question
             font-weight: bold
-        
+
           .statistic-bar
             height: 1.5rem
             background-color: #dee2e6
@@ -111,22 +102,22 @@
               padding: 0
               text-align: right
               background-color: #00cc99 
-          
+
           .statistic-data
             font-size: 0.8rem
             font-weight: bold
             text-align: center
-          
+
           .your-vote
             display: none
-          
+
           &.selected
             border-color: #00cc99
             background-color: rgba(#00cc99, 0.1)
 
             .question
               color: #00cc99
-            
+
             .your-vote
               margin: 0
               position: absolute
@@ -155,7 +146,7 @@
                 top: 1.5rem
                 left: -0.2rem
                 transform: rotate(-140deg)
-    
+
               &::after
                 left: auto
                 right: -0.2rem

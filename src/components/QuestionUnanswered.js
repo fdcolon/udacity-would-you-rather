@@ -19,7 +19,7 @@ const QuestionUnanswered = (props) => {
             onChange={ (e) => onOptionChange(e.currentTarget.value) }
           />  
         )) }
-        <Button type="submit" className="vote-btn">
+        <Button type="submit" className="submit-btn">
           Submit
         </Button>
       </Form>

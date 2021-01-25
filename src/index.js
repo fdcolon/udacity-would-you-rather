@@ -13,6 +13,7 @@ import './styles/nav.sass'
 import './styles/login.sass'
 import './styles/home.sass'
 import './styles/leader-board.sass'
+import './styles/new-question.sass'
 
 const store = createStore(reducers, middleware)
 

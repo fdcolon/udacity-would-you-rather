@@ -1,9 +1,10 @@
 import {
   SET_AUTHED_USER,
   SET_INVALID_USER,
-  SET_LOGOUT_USER
+  SET_LOGOUT_USER,
+  ADD_ANSWER,
+  ADD_QUESTION
 } from '../actions/authedUser'
-import { ADD_ANSWER } from '../actions/authedUser'
 
 export default function authUser (state = null, action) {
   switch (action.type) {
@@ -22,6 +23,11 @@ export default function authUser (state = null, action) {
           ...state.answers,
           [action.question.qid]: action.question.answer
         }
+      }
+    case ADD_QUESTION:
+      return {
+        ...state,
+        questions: state.questions.concat([action.question.id])
       }
     default:
       return state

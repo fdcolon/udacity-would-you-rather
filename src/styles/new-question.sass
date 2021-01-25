@@ -1,0 +1,39 @@
+.card
+  &.new-question-card
+    display: flex
+
+    .card-header
+      h2
+        font-size: 2rem
+
+    .card-body
+      .form-section
+        display: flex
+        flex-direction: column
+
+        .field
+          padding: 0.5rem 0
+          width: 100%
+
+          .input
+            width: 100%
+            border: 1px solid #dee2e6
+            border-radius: 0.25rem
+            outline: none
+
+            &.error
+              border: 1px solid #dc3545
+
+              &:focus
+                box-shadow: 0 0 0 0.2rem rgba(#dc3545, 0.25)
+            
+            &.ok
+              border: 1px solid #33cc33
+
+              &:focus
+                box-shadow: 0 0 0 0.2rem rgba(#33cc33, 0.25)
+
+          .error-message
+            color: #dc3545
+            font-size: 0.8rem
+

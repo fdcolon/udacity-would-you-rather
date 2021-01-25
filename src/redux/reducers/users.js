@@ -1,4 +1,8 @@
-import { RECEIVE_USERS, SET_USER_ANSWER } from '../actions/users'
+import {
+  RECEIVE_USERS,
+  SET_USER_ANSWER,
+  SET_USER_QUESTION
+} from '../actions/users'
 
 export default function users (state = {}, action) {
   switch (action.type) {
@@ -8,8 +12,6 @@ export default function users (state = {}, action) {
         ...action.users
       }
     case SET_USER_ANSWER:
-      console.log('SET_USER_ANSWER')
-      console.log(action)
       return {
         ...state,
         [action.question.authedUser]: {
@@ -18,6 +20,14 @@ export default function users (state = {}, action) {
             ...state[action.question.authedUser].answers,
             [action.question.qid]: action.question.answer
           }
+        }
+      }
+    case SET_USER_QUESTION:
+      return {
+        ...state,
+        [action.question.author]: {
+          ...state[action.question.author],
+          questions: state[action.question.author].questions.concat([action.question.id])
         }
       }
     default:

@@ -24,7 +24,7 @@ nav
 
           &.active
             color: white
-            position: relative;
+            position: relative
             display: inline-block
             padding-left: 0.6rem
             padding-right: 0.6rem
@@ -58,11 +58,31 @@ nav
         border-radius: 50%
       
       .logout-btn
+        padding-left: 0.6rem
+        padding-right: 0.6rem
         border: none
         background-color: transparent
 
         &:focus
           outline: none
+        
+        &:hover
+          color: white
+          position: relative
+          display: inline-block
+
+          &::after
+            content: ' '
+            position: absolute
+            top: 0
+            right: 0
+            bottom: -3px
+            left: 0
+            z-index: -1
+            border-bottom: none
+            border-radius: 0.25rem 0.25rem 0 0
+            background: #00cc99
+            transform: scale(1, 1) perspective(1em) rotateX(5deg)
 
 @media screen and (min-width: 768px)
   nav

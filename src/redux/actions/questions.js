@@ -1,7 +1,7 @@
 import { saveQuestion, saveQuestionAnswer } from '../../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { setUserAnswer } from './users'
-import { addAnswerToUser } from './authedUser'
+import { setUserAnswer, setUserQuestion } from './users'
+import { addAnswerToUser, addQuestionToUser } from './authedUser'
 
 export const GET_QUESTIONS = 'GET_QUESTIONS'
 export const SAVE_QUESTION = 'SAVE_QUESTION'
@@ -15,6 +15,10 @@ export function receiveQuestions (questions, user) {
   }
 }
 
+export function getQuestions () {
+
+}
+
 function addQuestion (question) {
   return {
     type: SAVE_QUESTION,
@@ -22,18 +26,27 @@ function addQuestion (question) {
   }
 }
 
-export function handleSaveQuestion (question) {
-  return dispatch => {
+export function handleSaveQuestion (optionOne, optionTwo) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
     dispatch(showLoading())
 
-    return saveQuestion(question)
-      .then(newQuestion => dispatch(addQuestion(newQuestion)))
-      .then(() => dispatch(hideLoading()))
+    return saveQuestion({
+      optionOneText: optionOne,
+      optionTwoText: optionTwo,
+      author: authedUser.id
+    })
+      .then(newQuestion => {
+        dispatch(setUserQuestion(newQuestion))
+        dispatch(addQuestionToUser(newQuestion))
+        dispatch(addQuestion(newQuestion))
+        dispatch(hideLoading())
+      })
   }
 }
 
 function addAnswer (question) {
-  console.log(question)
   return {
     type: SAVE_ANSWER,
     question
@@ -41,14 +54,15 @@ function addAnswer (question) {
 }
 
 export function handleSaveAnswer (questionData) {
-  console.log(questionData)
   return dispatch => {
     dispatch(showLoading())
 
     return saveQuestionAnswer(questionData)
-      .then(() => dispatch(setUserAnswer(questionData)))
-      .then(() => dispatch(addAnswerToUser(questionData)))
-      .then(() => dispatch(addAnswer(questionData)))
-      .then(() => dispatch(hideLoading()))
+      .then(() => {
+        dispatch(setUserAnswer(questionData))
+        dispatch(addAnswerToUser(questionData))
+        dispatch(addAnswer(questionData))
+        dispatch(hideLoading())
+      })
   }
 }

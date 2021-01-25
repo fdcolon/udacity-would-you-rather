@@ -4,6 +4,7 @@ export const SET_LOGOUT_USER = 'LOGOUT_USER'
 export const VALID_USER = 'VALID_USER'
 export const INVALID_USER = 'INVALID_USER'
 export const ADD_ANSWER = 'ADD_ANSWER'
+export const ADD_QUESTION = 'ADD_QUESTION'
 
 export function setAuthedUser (user) {
   return {
@@ -29,6 +30,13 @@ export function setInvalidUser () {
 export function addAnswerToUser (question) {
   return {
     type: ADD_ANSWER,
+    question
+  }
+}
+
+export function addQuestionToUser (question) {
+  return {
+    type: ADD_QUESTION,
     question
   }
 }
