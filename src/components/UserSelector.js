@@ -52,6 +52,7 @@ class UserSelector extends Component {
           options={ this.setOptions(users) }
           onChange={ (event) => this.onSelectUser(event?.value) }
           className="users-list"
+          maxMenuHeight='11rem'
           isClearable={ true }
         />
 
