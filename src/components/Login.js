@@ -17,14 +17,14 @@ class Login extends Component {
 
   loginUser (userId) {
     if (!!userId) {
-      const { users, handleSignInUser } = this.props
+      const { handleSignInUser } = this.props
       
-      handleSignInUser(userId, users)
+      handleSignInUser(userId)
     }
   }
   
   render() {
-    const { users } = this.props
+    const { authedUser, users } = this.props
 
     return (
       <Card className="text-center">
@@ -42,6 +42,7 @@ class Login extends Component {
             Sign In
           </Card.Title>
           <UserSelector
+            authedUser={ authedUser }
             users={ users }
             onSubmit={ formValues => this.loginUser(formValues.userId.value) }
           />

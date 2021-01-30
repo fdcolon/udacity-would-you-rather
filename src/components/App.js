@@ -57,6 +57,7 @@ class App extends Component {
                       />
                       <Route
                         path="/questions/:question_id"
+                        exact
                         component={ QuestionDetails }
                       />
                       <Route

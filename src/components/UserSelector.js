@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import { Field, reduxForm } from 'redux-form'
 
+import { VALID_USER } from '../redux/actions/authedUser'
 import { ReduxFormSelect } from './form-fields'
 import Avatar from './Avatar'
 
@@ -20,6 +21,11 @@ class UserSelector extends Component {
       }
     })
 
+    options.unshift({
+      label: <div className="option"><Avatar url="/ghost.png" showSmall={ true } /> Ghost User</div>,
+      value: 'ghost'
+    })
+
     return options
   }
 
@@ -30,7 +36,7 @@ class UserSelector extends Component {
   }
 
   render() {
-    const { users } = this.props
+    const { users, authedUser } = this.props
     const { selectedUser } = this.state
 
     return (
@@ -48,6 +54,13 @@ class UserSelector extends Component {
           className="users-list"
           isClearable={ true }
         />
+
+        { authedUser && authedUser.status !== VALID_USER && (
+          <div className="alert alert-danger" role="alert">
+            We're sorry, but that is an invalid user!
+          </div>
+        ) }
+
         <Button
           type="submit"
           variant="info"

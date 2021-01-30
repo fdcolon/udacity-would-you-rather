@@ -26,18 +26,17 @@ export function handleGetInitialData () {
  * @param {Object} user // Contains the authed user info (if any selected).
  * @param {Array} users // Contains the list of existing valid users.
  */
-export function handleSignInUser (userId, users) {
-  const validUser = Object.keys(users).find(user => user === userId)
+export function handleSignInUser (userId) {
+  return (dispatch, getState) => {
+    const { users } = getState()
+    const validUser = Object.keys(users).find(user => user === userId)
 
-  if (!validUser) {
-    return dispatch => {
+    if (!validUser) {
       dispatch(setInvalidUser(userId))
+    } else {
+      dispatch(showLoading())
+      dispatch(setAuthedUser(users[validUser]))
+      dispatch(hideLoading())
     }
-  }
-  
-  return dispatch => {
-    dispatch(showLoading())
-    dispatch(setAuthedUser(users[validUser]))
-    dispatch(hideLoading())
   }
 }
