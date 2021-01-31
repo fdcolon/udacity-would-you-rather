@@ -68,7 +68,7 @@ class UserSelector extends Component {
           className="sign-in-btn"
           disabled={ !selectedUser }
         >
-          Submit
+          Sign In
         </Button>
       </Form>
     )
