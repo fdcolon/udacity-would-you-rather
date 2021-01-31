@@ -5,7 +5,7 @@ import { FaHome } from "react-icons/fa"
 function PageNotFound(props) {
   const messages = [
     `The wrong path you choose! Going back to Home you must!`,
-    `I'm sorry master, but the poll you are looking for doesn't exist! Please go back to Home.`,
+    `I couldn't find anything in this path. We must go back to Home. This is the way!`,
     `I told you R2, we shouldn't have accesed to this path. Now we need to go back to Home!`,
     `It's a trap! This path belongs to an unexisting poll. Go back to Home!`
   ]
