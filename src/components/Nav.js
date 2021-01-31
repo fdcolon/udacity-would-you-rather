@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import { setLogoutUser, VALID_USER } from '../redux/actions/authedUser'
 import Avatar from './Avatar'
@@ -9,10 +9,14 @@ class Nav extends Component {
   onLogoutUser () {
     const { setLogoutUser } = this.props
     setLogoutUser()
+    this.props.history.push('/')
   }
 
   render () {
     const { authedUser } = this.props
+    const activeClassName = authedUser?.status === VALID_USER
+      ? 'active'
+      : ''
     return (
       <nav>
         <div className="nav-container">
@@ -20,7 +24,7 @@ class Nav extends Component {
             <li>
               <NavLink
                 to="/home"
-                activeClassName="active"
+                activeClassName={ activeClassName }
               >
                 Home
               </NavLink>
@@ -28,7 +32,7 @@ class Nav extends Component {
             <li>
               <NavLink
                 to="/user"
-                activeClassName="active"
+                activeClassName={ activeClassName }
               >
                 New User
               </NavLink>
@@ -36,7 +40,7 @@ class Nav extends Component {
             <li>
               <NavLink
                 to="/add"
-                activeClassName="active"
+                activeClassName={ activeClassName }
               >
                 New Question
               </NavLink>
@@ -44,7 +48,7 @@ class Nav extends Component {
             <li>
               <NavLink
                 to="/leaderboard"
-                activeClassName="active"
+                activeClassName={ activeClassName }
               >
                 Leader Board
               </NavLink>
@@ -80,7 +84,7 @@ const dispatchStateToProps = {
   setLogoutUser
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   dispatchStateToProps
-)(Nav)
+)(Nav))

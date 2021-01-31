@@ -203,13 +203,19 @@ Once you signed in as the new user, you should see the `Home` page with all the 
 
 ### Page Not Found
 
-Currently, because I'm not using `localstorage` or `sessionstorage` to keep the user's session alive, when you try to access to an unexisting poll, you will get a `404` page with a random funny message and a button to go `Back to Home`. Here I share to you two possible views.
+Currently, because I'm not using `localstorage` or `sessionstorage` to keep the user's session alive, when you try to access to an unexisting poll, you will get a `404` page with a random funny message and a button to go `Back to Home`. These are the four possible views you could get.
 
 ![](https://github.com/fdcolon/udacity-would-you-rather/blob/main/public/page-not-found-01.png)
 **Figure 29** - Page Not Found (option 1).
 
 ![](https://github.com/fdcolon/udacity-would-you-rather/blob/main/public/page-not-found-02.png)
 **Figure 30** - Page Not Found (option 2).
+
+![](https://github.com/fdcolon/udacity-would-you-rather/blob/main/public/page-not-found-03.png)
+**Figure 31** - Page Not Found (option 3).
+
+![](https://github.com/fdcolon/udacity-would-you-rather/blob/main/public/page-not-found-04.png)
+**Figure 32** - Page Not Found (option 4).
 
 If you would like to test it, you can use the following URL:
 ```

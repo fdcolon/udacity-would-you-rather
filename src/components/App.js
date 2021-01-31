@@ -12,7 +12,6 @@ import Home from './Home'
 import QuestionDetails from './Questions/QuestionDetails'
 import NewQuestion from './Questions/NewQuestion'
 import LeaderBoard from './LeaderBoard/LeaderBoard'
-import PageNotFound from './PageNotFound'
 import UserCard from './Users/UserCard'
 import { VALID_USER } from '../redux/actions/authedUser'
 
@@ -63,10 +62,6 @@ class App extends Component {
                       <Route
                         path="/leaderboard"
                         component={ LeaderBoard }
-                      />
-                      <Route
-                        path="/404"
-                        component={ PageNotFound }
                       />
                       <Route render={() => <Redirect to={
                         authedUser?.status === VALID_USER
