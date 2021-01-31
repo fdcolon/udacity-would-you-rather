@@ -8,7 +8,7 @@ Clone the GitHub repository and use `yarn` to install the dependencies.
 
 ```
 > git clone https://github.com/fdcolon/udacity-would-you-rather.git
-> cd would-you-rather
+> cd udacity-would-you-rather
 > yarn install 
 ```
 
